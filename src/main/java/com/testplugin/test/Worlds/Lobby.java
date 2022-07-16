@@ -1,6 +1,6 @@
 package com.testplugin.test.Worlds;
 
-import com.github.ataru.testplugin.Main;
+import com.testplugin.test.Test;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -14,11 +14,11 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 
 public class Lobby implements Listener {
-    private Main plugin;
+    private Test plugin;
     public String worldName = "lobby";
     public Location spawnPlace;
     public World world;
-    public Lobby(Main plugin) {
+    public Lobby(Test plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
         this.world = Bukkit.getWorld(this.worldName);
