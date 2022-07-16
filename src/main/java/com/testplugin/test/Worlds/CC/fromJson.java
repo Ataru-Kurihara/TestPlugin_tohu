@@ -1,6 +1,12 @@
 package com.testplugin.test.Worlds.CC;
 
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Arrays;
 
 public class fromJson {
     public void FROM_JSON() throws Exception {
@@ -114,17 +120,14 @@ public class fromJson {
                 "      ]\n" +
                 "    ]\n" +
                 " }\n";
+        URL resources = fromJson.class.getResource("/sample.json");
+        System.out.println(resources);
         Gson gson = new Gson();
-//            JsonObject jsonObject = gson.fromJson(Files.readString(Paths.get("./sample.json")), JsonObject.class);
-//            System.out.println(jsonObject);
-
-
-//
-//            InputStreamReader isr = new InputStreamReader(new FileInputStream("./sample.json"));
-//            JsonReader jsr = new JsonReader(isr);
+        InputStreamReader isr = new InputStreamReader(new FileInputStream("./sample.json"));
+        JsonReader jsr = new JsonReader(isr);
         //Question question = gson.fromJson(json, Question.class);
-//            Question question = gson.fromJson(isr, Question.class);
-//            System.out.println("blocks: "+ Arrays.deepToString(question.blocks));
+        Question question = gson.fromJson(isr, Question.class);
+        System.out.println("blocks: "+ Arrays.deepToString(question.blocks));
 
     }
 }
