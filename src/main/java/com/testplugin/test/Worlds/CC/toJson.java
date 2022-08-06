@@ -7,16 +7,22 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class toJson {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     static String[][][] material_str = new setQuestion().question_str();
-    static Question question = new Question(1, 200, material_str);
-    static List<Question> questionList = new ArrayList<>();
+    static List<String> questionList = new ArrayList<>();
     public void main() {
-        questionList.add(question);
-        File file = new File("./sample.json");
+        QuestionDate qd = new QuestionDate();
+        qd.setId(1);
+        qd.setRating(200);
+        qd.setBlocks(material_str);
+        questionList.add(String.valueOf(qd.getId()));
+        questionList.add(String.valueOf(qd.getRating()));
+        questionList.add(Arrays.deepToString(qd.getBlocks()));
+        File file = new File("com/testplugin/test/Worlds/CC/sample.json");
         try {
             FileWriter fileWriter = new FileWriter(file);
             gson.toJson(questionList, fileWriter);

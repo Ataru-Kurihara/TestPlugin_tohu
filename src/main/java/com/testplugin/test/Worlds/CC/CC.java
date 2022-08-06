@@ -42,11 +42,12 @@ public class CC implements Listener {
     public void test(PlayerInteractEvent e) throws IOException {
         if (this.world != e.getPlayer().getWorld()) return;
         if (e.getItem() == null) return;
-        int PlayerNum = 1;
+        int PlayerNum = 2;
         Player player = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             player.sendMessage(e.getItem().toString());
             ItemStack itemStack = e.getItem();
+            this.locations = new Location[]{this.startPoint, this.startPoint_Walls_RL, this.startPoint_Walls_AB, this.startPoint_celling};
             if (itemStack.getType() == Material.GRASS) {
                 player.sendMessage("clear");
                 this.locations = new Location[]{this.startPoint, this.startPoint_Walls_RL, this.startPoint_Walls_AB, this.startPoint_celling};
@@ -54,8 +55,8 @@ public class CC implements Listener {
                 createRoom.Create(PlayerNum, this.world, this.locations, Material.AIR);
             }
             else if (itemStack.getType() == Material.STONE) {
+                player.sendMessage("create!!");
                 this.locations = new Location[]{this.startPoint, this.startPoint_Walls_RL, this.startPoint_Walls_AB, this.startPoint_celling};
-                player.sendMessage("create");
                 CreateRoom createRoom = new CreateRoom();
                 createRoom.Create(PlayerNum, this.world, this.locations, Material.GLASS);
             }
@@ -88,7 +89,7 @@ public class CC implements Listener {
             Player player = e.getPlayer();
             player.sendTitle(this.worldName,"test",20,20,20);
             player.teleport(this.spawnPlace);
-
+            player.getInventory().clear();
             int PlayerNum = GetPlayers.getPlayersNum(this.world);
             player.sendMessage(String.valueOf(PlayerNum));
             ItemStack[] items = {new ItemStack(Material.GRASS), new ItemStack(Material.STONE), new ItemStack(Material.GLASS), new ItemStack(Material.GOLD_BLOCK), new ItemStack(Material.IRON_BLOCK)};

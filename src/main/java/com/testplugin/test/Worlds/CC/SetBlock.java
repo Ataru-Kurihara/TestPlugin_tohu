@@ -24,7 +24,4 @@ public class SetBlock {
                 location.add(0,0,-1);
             }
     }
-
-
-
 }

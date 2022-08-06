@@ -5,6 +5,18 @@ public class QuestionDate {
     private int rating;
     private String[][][] blocks;
 
+    public void setId(int Id) {
+        this.id = Id;
+    }
+
+    public void setRating(int Rating) {
+        this.rating = Rating;
+    }
+
+    public void setBlocks(String[][][] Blocks) {
+        this.blocks = Blocks;
+    }
+
     public int getId() {
         return id;
     }
