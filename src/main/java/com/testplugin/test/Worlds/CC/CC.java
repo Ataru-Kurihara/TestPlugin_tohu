@@ -42,7 +42,7 @@ public class CC implements Listener {
     public void test(PlayerInteractEvent e) throws IOException {
         if (this.world != e.getPlayer().getWorld()) return;
         if (e.getItem() == null) return;
-        int PlayerNum = 2;
+        int PlayerNum = 3;
         Player player = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             player.sendMessage(e.getItem().toString());
